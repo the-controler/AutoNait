@@ -8,7 +8,7 @@ export class User {
     card_id_or_passeport:any;
     driving_license:any;
 
-    
+    role:any;
     username:any;
     password:any;
 }

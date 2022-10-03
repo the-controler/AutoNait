@@ -1,8 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Validators, UntypedFormBuilder } from '@angular/forms';
+import { Validators, UntypedFormBuilder, FormGroup } from '@angular/forms';
 import {  Router } from '@angular/router';
 import { User } from 'src/app/class/user';
 import { ServicesService } from 'src/app/service/services.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-addclient',
@@ -23,6 +25,9 @@ export class AddclientComponent implements OnInit {
     sevenCtrl: ['', Validators.required], eighthCtrl: ['', Validators.required],
   });
   isLinear = false;
+  submitted= false;
+  username=false;
+  form : FormGroup | any;
 
   user = new User();
   users:any;
@@ -32,9 +37,36 @@ export class AddclientComponent implements OnInit {
   ngOnInit(): void {
   }
   AddUser(){
-    this.dataService.registerUser(this.user).subscribe(res=>{
-        console.log(res);
-      this.router.navigate(['/']);
-      })
-    }
+    
+
+
+     this.dataService.registerUser(this.user).subscribe(res=>{
+         console.log(res);
+         this.submitted= true;
+         this.username=false;
+       this.router.navigate(['/']);
+       },
+       (error) => {                              //Error callback
+         console.error('error caught in component')
+         this.usern();        
+   
+         //throw error;   //You can also throw the error to a global error handler
+       }
+       )
+
+
+
+
+     }
+    
+  
+    
+    get f(){
+
+      return this.form.controls;}
+
+      usern(){
+        this.username=true;
+      }
 }
+
