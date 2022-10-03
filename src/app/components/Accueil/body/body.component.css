@@ -1,0 +1,17 @@
+.html{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.todo{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+img{
+    border-radius: 50%;
+    width: 12%;
+    margin: 20px;
+  display:inline;
+ 
+}
