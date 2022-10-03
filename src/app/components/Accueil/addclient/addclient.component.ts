@@ -46,11 +46,10 @@ export class AddclientComponent implements OnInit {
          this.username=false;
        this.router.navigate(['/']);
        },
-       (error) => {                              //Error callback
+       (error) => {                            
          console.error('error caught in component')
          this.usern();        
    
-         //throw error;   //You can also throw the error to a global error handler
        }
        )
 

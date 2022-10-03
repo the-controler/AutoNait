@@ -22,6 +22,7 @@ import {   MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { MatStepperModule } from '@angular/material/stepper';
 import { AddclientComponent } from './components/Accueil/addclient/addclient.component';
+import { FooterComponent } from './components/Accueil/footer/footer.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AddclientComponent } from './components/Accueil/addclient/addclient.com
     BodyComponent,
     NavbarComponent,
     SliderComponent,
-    AddclientComponent
+    AddclientComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
