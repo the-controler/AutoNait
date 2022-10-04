@@ -33,8 +33,7 @@ body{
     background: #000000;
 
     font-size: 25px;
-    font-family: serif;
-    width: auto;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     height: auto;
     padding: 30px;
 }
@@ -76,3 +75,47 @@ body{
     color:  #ffffff;
   }
  
+
+  .who{
+    background-color: #0f0f0f;
+
+    margin:2%;
+    color: white;
+  
+   font-size:medium;
+    border: 1px solid #e45c30;
+    width: 90%;
+    height: auto;
+    padding: 3%;
+    padding-right: 0%;
+  }
+
+  .container {
+    display: flex;
+}
+
+.container p {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.whoo{
+
+    position:relative;
+    margin-left:3%;
+    margin-right: 0%;
+    width: 100%;
+
+}
+.pp{
+    position:relative;
+    width:100%;
+    
+    max-width:700px;
+    font-size: large;
+    margin:2%;
+    border-right: double 2px;
+
+    }
+    #po{
+margin-right: 10%;
+    }

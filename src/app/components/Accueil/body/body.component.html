@@ -13,10 +13,110 @@
         <img src="../../assets/brands/brand5.jpg">
     </a>
     </div>
+<div>
+    <h1><b>Nos Services</b></h1>
+<div>
+
+
+
+    <script>
+        function flip() {
+            $('.card').toggleClass('flipped');
+        }
+    </script>
+
+<section class="pt-5 pb-5" id="home_section">
+    <div class="container" >
+        <div class="row">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-12" >
+                <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner" >
+                        <div class="carousel-item  active" >
+                            <div class="row" >
+
+                                <div class="col-md-4 mb-3" *ngFor="let car of cars">
+                                    <div class="card">
+                                       
+                                        <div class="all2" onclick="flip()" (click)="cardClicked()" [@cardFlip]="data.state" >
+                                            <a href="#addcli" ><div class="face_front">
+                                                <img class="card-img-top" src="{{car.image}}" alt="Card image cap" id="anivimage">
+
+
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{car.name}}</h5>
+                                                    <p class="card-text">{{car.description}}<br></p>
+                                                        
+                                                </div>
+                                                <div class="card-footer" style="padding:5%;">
+                                                     <small class="text-muted"><div>
+                                                        <span style="color: #e45c30;">{{car.price}} Dh </span>
+                                                        <span style="  opacity: 0.5;"> / Pour Jour</span></div>
+                                                    </small>
+                                                </div>
+                                            </div></a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                
+                                
+
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true" onclick="plusDivs(-1)"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true" onclick="plusDivs(1)"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+</div>
+</div>
 
     
-    </div>
+    
 
 
 
-    <app-footer></app-footer>
+    <app-footer></app-footer></div>
