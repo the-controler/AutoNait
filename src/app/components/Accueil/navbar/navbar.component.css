@@ -4,3 +4,8 @@
 ul{
     margin: auto;
 }
+a,a:hover, a:focus{
+    display: block;
+    color: inherit;
+    text-decoration: inherit;
+}

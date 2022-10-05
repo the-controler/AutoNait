@@ -24,7 +24,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { AddclientComponent } from './components/Accueil/addclient/addclient.component';
 import { FooterComponent } from './components/Accueil/footer/footer.component';
 
-
+import '@angular/localize/init';
 @NgModule({
   declarations: [
     AppComponent,

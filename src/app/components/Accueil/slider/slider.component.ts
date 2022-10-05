@@ -18,6 +18,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SliderComponent implements OnInit {
  
 
+  Days: any;
+  Time: any;
+
+
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -33,6 +37,9 @@ export class SliderComponent implements OnInit {
 
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
+  date2: any;
+  date1: any;
+  diffInDays: number;
   constructor(private dataService:ServicesService 
     ,private calendar: NgbCalendar, public formatter: NgbDateParserFormatter,
     private _formBuilder: UntypedFormBuilder) { 
@@ -49,7 +56,8 @@ cars:any;
 
 
 
-
+    console.log('time'+this.Time);
+    console.log(this.Days);
 
 
      this.minPickerDate = {
@@ -108,6 +116,24 @@ cars:any;
 
 
   
+
+calcdays(){
+  this.date1 =this.createDateFromNgbDate(this.fromDate!);
+  this.date2 =this.createDateFromNgbDate(this.toDate!);
+
+     this.Time = this.date2.getTime() - this.date1.getTime(); 
+     this.Days = this.Time / (1000 * 3600 * 24); //Diference in Days
+     console.log(this.Days);
+     
+return this.Days;
+    }
+
+    private createDateFromNgbDate(ngbDate: NgbDate): Date {
+      const date: Date = new Date(Date.UTC(ngbDate.year, ngbDate.month-1, ngbDate.day));  
+      return date;
+    }
+
+
 }
 
 

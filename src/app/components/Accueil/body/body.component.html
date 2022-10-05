@@ -1,14 +1,12 @@
-
+<body>
 <div class="todo">
 
     <app-slider></app-slider>
-    <div class="html">
+    <div class="html" id="brands">
         <h1><b>Nos Marques</b></h1>
         <a href="#">
         
         <img src="../../assets/brands/brand1.jpg">
-        <img src="../../assets/brands/brand2.jpg">
-        <img src="../../assets/brands/brand3.jpg">
         <img src="../../assets/brands/brand4.jpg">
         <img src="../../assets/brands/brand5.jpg">
     </a>
@@ -88,7 +86,39 @@
 
                             </div>
                         </div>
-                        
+                            <div class="carousel-item " >
+                                <div class="row" >
+    
+                                    <div class="col-md-4 mb-3" *ngFor="let car of cars">
+                                        <div class="card">
+                                           
+                                            <div class="all2" onclick="flip()" (click)="cardClicked()" [@cardFlip]="data.state" >
+                                                <a href="#addcli" ><div class="face_front">
+                                                    <img class="card-img-top" src="{{car.image}}" alt="Card image cap" id="anivimage">
+    
+    
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">{{car.name}}</h5>
+                                                        <p class="card-text">{{car.description}}<br></p>
+                                                            
+                                                    </div>
+                                                    <div class="card-footer" style="padding:5%;">
+                                                         <small class="text-muted"><div>
+                                                            <span style="color: #e45c30;">{{car.price}} Dh </span>
+                                                            <span style="  opacity: 0.5;"> / Pour Jour</span></div>
+                                                        </small>
+                                                    </div>
+                                                </div></a>
+    
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    
+                                    
+    
+                                </div>
+                            </div>
 
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
@@ -120,3 +150,4 @@
 
 
     <app-footer></app-footer></div>
+</body>
