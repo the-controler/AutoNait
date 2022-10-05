@@ -56,9 +56,6 @@ cars:any;
 
 
 
-    console.log('time'+this.Time);
-    console.log(this.Days);
-
 
      this.minPickerDate = {
       // year:   this.nyear , month:  this.nmonth , day: this.nday
@@ -124,11 +121,13 @@ calcdays(){
      this.Time = this.date2.getTime() - this.date1.getTime(); 
      this.Days = this.Time / (1000 * 3600 * 24); //Diference in Days
      console.log(this.Days);
-     
+     localStorage.setItem('debut', this.date1);
+     localStorage.setItem('fin', this.date2);
+     localStorage.setItem('num jr', this.Days);
 return this.Days;
     }
 
-    private createDateFromNgbDate(ngbDate: NgbDate): Date {
+     createDateFromNgbDate(ngbDate: NgbDate): Date {
       const date: Date = new Date(Date.UTC(ngbDate.year, ngbDate.month-1, ngbDate.day));  
       return date;
     }
