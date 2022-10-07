@@ -5,6 +5,13 @@
     justify-content: center;
     text-align: center;
 }
+
+.centered {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    
+  }
 .todo{
   font-family:Georgia, 'Times New Roman', Times, serif;
   background-color: black;

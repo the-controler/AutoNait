@@ -119,3 +119,8 @@ body{
     #po{
 margin-right: 10%;
     }
+    a,a:hover, a:focus{
+        display: block;
+        color: inherit;
+        text-decoration: inherit;
+    }

@@ -2,10 +2,17 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
-    <body>
-<div class="slide"  content="width=device-width, initial-scale=1.0">
+    <body ng-app="">
+        <input hidden value="{{cli}}" name="cli">
+        <input hidden value="{{nocli}}" name="nocli">
+       
+        
+            <div *ngIf="nocli;else cli">
+
+    <div class="slide"  content="width=device-width, initial-scale=1.0">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner " >
+        
+        <div class="carousel-inner " id="carousel1">
             <div class="carousel-item active" >
                 <img class="d-block w-100" src="../../assets/slider_cars/car00.jpg" alt="slide" id="slide">
                 <div class="title-right"><h1>Le plus grand service de réservation de voitures de location au Maroc.
@@ -25,8 +32,10 @@
                     </div>
                     
                 </form>
+            </div>
         </div>
-        </div>
+    
+       
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true" onclick="plusDivs(-1)"></span>
             <span class="sr-only">Previous</span>
@@ -38,7 +47,8 @@
     </div>
 </div>
 
-<div class="but-res" id="addcli" >
+
+<div class="but-res" id="addcli"  >
     Rejoignez-nous :<br><br>
 
 
@@ -207,8 +217,246 @@
     </div>
 
 
-<div class="centered">      <app-navbar></app-navbar>   </div>
+   
 
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-template  #cli>
+
+
+
+
+
+
+
+
+<div class="slide"  content="width=device-width, initial-scale=1.0" id="todo">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+       
+   
+        <div class="carousel-inner"   id="carousel2" style="width: 100%; padding:0%;margin:0%">
+            <div class="carousel-item active"  id="item2">
+                <img class="d-block w-100" src="../../assets/slider_cars/car00.jpg" alt="slide" id="slide">
+                <div class="title-right"><h1>Le plus grand service de réservation de voitures de location au Maroc.
+                    </h1></div>
+                    <h3 class="sub-right">Trouvez et réservez une voiture de votre choix.</h3>
+            </div>
+            <div class="carousel-item " *ngFor="let car of cars" id="carousel2">
+                <img class="d-block w-100" src="{{car.image}}" alt="First slide" id="slide">
+                <div class="top-right2"><h1>{{car.name}}</h1></div>
+                <div class="desc-right">{{car.description}}
+                    <br><br><br><br> <div style="color: #ADB5BD;"><span style="color: #e45c30;">{{car.price}} Dh </span><span style="  opacity: 0.5;"> / Pour Jour</span></div>
+                </div>
+                <form>
+                    <div class="res_but" role="button" id="myBtn" (click)='save_id_car(car.name)'   type="submit" data-toggle="modal"
+                     data-target="#exampleModal">
+                        Réservez Maintenant
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true" onclick="plusDivs(-1)"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" onclick="plusDivs(1)"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+        <div class="noth">
+            <h2>
+                Bienvenue {{user_lname}} {{user_name}} !!
+            </h2>
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: rgb(0, 0, 0); ">
+        <div class="modal-dialog modal-lg" role="document" >
+        <div class="modal-content"  id="alert">
+        <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">Date de réservation</h5>
+        <button type="button" class="close" data-mdb-dismiss="modal" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-0">
+             
+    
+      <form class="row row-cols-sm-auto">
+        <div class="col-12">
+          <div class="dp-hidden position-absolute">
+            <div class="input-group" id="1">
+                <input name="datepicker"
+                class="form-control"
+                ngbDatepicker
+                #datepicker="ngbDatepicker"
+                [autoClose]="'outside'"
+                (dateSelect)="onDateSelection($event)"
+                [displayMonths]="2"
+                [dayTemplate]="t"
+                outsideDays="hidden"
+                [startDate]="fromDate!"
+                tabindex="-1"  [minDate]="minPickerDate" hidden>
+         <ng-template #t let-date let-focused="focused">
+           <span class="custom-day"
+                 [class.focused]="focused"
+                 [class.range]="isRange(date)"
+                 [class.faded]="isHovered(date) || isInside(date)"
+                 (mouseenter)="hoveredDate = date"
+                 (mouseleave)="hoveredDate = null">
+             {{ date.day }}
+           </span>
+         </ng-template>
+            </div>
+          </div>
+          <div class="input-group">
+            <mat-label for="dpFromDate">DÉPART : </mat-label>
+    
+            <input #dpFromDate
+                   class="form-control" placeholder="yyyy-mm-dd"
+                   name="dpFromDate"
+                   [value]="formatter.format(fromDate)"
+                   (input)="fromDate = validateInput(fromDate, dpFromDate.value)" >
+            <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+              </svg></button>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="input-group">
+            <mat-label for="dpToDate">RETOUR : </mat-label>
+            <input #dpToDate
+                   class="form-control" placeholder="yyyy-mm-dd"
+                   name="dpToDate"
+                   [value]="formatter.format(toDate)"
+                   (input)="toDate = validateInput(toDate, dpToDate.value)">
+            <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+              </svg></button>
+          </div>
+        </div>
+      </form>
+      
+      <hr/>
+      <!-- <pre>From date model: {{ fromDate | json }}</pre>
+      <pre>To date model: {{ toDate | json }}</pre> -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        </div>
+        <div class="modal-footer">
+        <button  class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="calcdays()" (onclick)="calcdays()">Save</button>
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    </ng-template>
 
 
 

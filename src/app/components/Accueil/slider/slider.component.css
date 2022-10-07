@@ -1,19 +1,43 @@
 .fixed-padding {
   padding-right: 0px !important;
 }
- .carousel-inner {
+
+.false{
+  display: none;
+}
+#todo {
+ 
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+#carousel1 {
   position: relative;
   height: 800px;
   width: auto;
   padding: 5px;
   padding-right: 500px;
 }
+#carousel2 {
+  position: relative;
+  height: 800px;
+  width: auto;
 
+
+}
+#item2{
+  width: 100%;
+
+}
 #slide {
   width: auto;
   height: 700px;
 
 }
+
 body{
   background-color: black;
   position: relative;
@@ -57,16 +81,15 @@ html{
   position: relative;
 
     }
-
+.slide2 {
+      position: relative;
+      padding-right: 20%;
+  padding-left: 20%;
+        }
 
 
 /* Centered text */
-.centered {
-  position: absolute;
-  top: 0%;
-  width: 100%;
-  
-}
+
 .top-right {
   position: absolute;
    left: 10%;
@@ -74,6 +97,14 @@ html{
   top: 15%;
   width: 100%;
   margin: 50px;
+  font-size: larger;
+}
+.top-right2 {
+  position: absolute;
+   left:0%;
+  color: white;
+  top: 15%;
+  width: 100%;
   font-size: larger;
 }
 .desc-right{
@@ -99,6 +130,22 @@ html{
 height: auto;
 padding: 50px;
 margin: 50px;
+
+}
+
+
+.noth{
+  position: absolute;
+  right: 0%; 
+  left: 85%;
+ color: white;
+ top: 20%;
+ font-size: large;
+  background-color: black;
+ width: 400px;
+height: auto;
+padding: 0;
+margin: 0px;
 
 }
 .title-right{

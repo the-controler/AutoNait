@@ -40,6 +40,12 @@ export class SliderComponent implements OnInit {
   date2: any;
   date1: any;
   diffInDays: number;
+
+  user_id:any;
+  car_name:any;
+  
+  token:any;
+
   constructor(private dataService:ServicesService 
     ,private calendar: NgbCalendar, public formatter: NgbDateParserFormatter,
     private _formBuilder: UntypedFormBuilder) { 
@@ -49,10 +55,16 @@ export class SliderComponent implements OnInit {
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 cars:any;
+
+nocli=true;
+cli=false;
+user_name:any;
+user_lname:any;
+pp='none';
   ngOnInit(): void {
  
 
-
+    this.GetAllItems();
 
 
 
@@ -68,6 +80,22 @@ cars:any;
     
 
   }
+
+
+GetAllItems(){
+this.token=localStorage.getItem('token');
+  this.user_id=localStorage.getItem('user_card_id_or_passeport');
+  this.car_name=localStorage.getItem('car');
+  this.user_name=localStorage.getItem('user_fname');
+  this.user_lname=localStorage.getItem('user_lname');
+  if(this.token!=null){
+    this.nocli=false;
+    this.cli=true;
+
+  }
+}
+
+
   getcars(){
     this.dataService.getcars().subscribe(res => {
     this.cars = res;

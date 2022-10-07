@@ -1,6 +1,6 @@
 
 
-
+<body ng-app="">
 
       <div class="example-input-wrapper" hidden>
         <label for="duration">Animation duration:</label>
@@ -16,7 +16,7 @@
                 </div>
        
       </div>
-      <mat-vertical-stepper [linear]="true" #stepper [animationDuration]="duration.value" 
+      <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="duration.value" 
       style="background-color: black; color: white;" >
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
@@ -47,7 +47,7 @@
                 <input matInput placeholder="N° tele" formControlName="thirdCtrl" required [(ngModel)]="user.phone" name="phone" minlength="10">
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Age" formControlName="fourthCtrl" required [(ngModel)]="user.age" name="age" type="number" min="23"
+                <input matInput placeholder="Age Au Moins 23" formControlName="fourthCtrl" required [(ngModel)]="user.age" name="age" type="number" min="23"
                 >
               </mat-form-field>
               <div>
@@ -59,9 +59,34 @@
         <mat-step [stepControl]="thirdFormGroup">
           <form [formGroup]="thirdFormGroup">
             <ng-template matStepLabel>N° CNE ou N° Passports et N° de permis</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="CNE / Passports" formControlName="fifthCtrl" required [(ngModel)]="user.card_id_or_passeport" name="card_id_or_passeport">
-            </mat-form-field>
+
+
+
+            
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="CNE" id="CNE" ng-model="CNE"  value = "CNE" >
+              <label class="form-check-label" for="CNE">
+                
+                CNE
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="Passports" id="Passports" checked ng-model="Passports"  value = "Passports"  >
+              <label class="form-check-label" for="Passports">
+                Passports
+              </label>
+            </div> <mat-form-field  ng-show="CNE">
+              
+             
+              <input matInput placeholder="CNE" formControlName="fifthCtrl" required [(ngModel)]="user.card_id_or_passeport" name="card_id_or_passeport">
+          </mat-form-field>
+            <mat-form-field ng-show="Passports">
+              
+          
+                <input matInput placeholder="Passports" formControlName="fifthCtrl" required [(ngModel)]="user.card_id_or_passeport" name="card_id_or_passeport">
+              
+          </mat-form-field>
+            
             <mat-form-field>
                 <input matInput placeholder="N° de permis" formControlName="sixthCtrl" required [(ngModel)]="user.driving_license" name="driving_license">
               </mat-form-field>
@@ -75,16 +100,10 @@
             <form [formGroup]="fourthFormGroup">
               <ng-template matStepLabel>Nom d'utilisateur / Password</ng-template>
               <mat-form-field>
-                <input matInput placeholder="Nom d'utilisateur" formControlName="sevenCtrl" required [(ngModel)]="user.username" name="username"
-                [ngClass]="{'is-invalid': submitted && f.username.errors}">
+                <input matInput placeholder="Nom d'utilisateur" formControlName="sevenCtrl" required [(ngModel)]="user.username" 
+                name="username">
                 
-                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                  
-                  <div *ngIf="f.username.errors.username">
-                      Entre un username Valide
-                  </div>
-
-              </div>
+                
               </mat-form-field>
               <mat-form-field>
                 <input matInput placeholder="Password" formControlName="eighthCtrl" required [(ngModel)]="user.password" name="password">
@@ -118,7 +137,7 @@
 
 
 
-
+    </body>
 
 
 

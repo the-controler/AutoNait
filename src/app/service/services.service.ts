@@ -14,4 +14,10 @@ export class ServicesService {
   registerUser(data: any){
     return this.httpClient.post('https://autobackn.herokuapp.com/api/registerUser',data);
   }
+  loginUser(data: any){
+    return this.httpClient.post('https://autobackn.herokuapp.com/api/login',data);
+  }
+  logout(){
+    return this.httpClient.get('https://autobackn.herokuapp.com/api/logout');
+  }
 }

@@ -9,3 +9,6 @@ a,a:hover, a:focus{
     color: inherit;
     text-decoration: inherit;
 }
+body{
+    background-color: black;
+}
