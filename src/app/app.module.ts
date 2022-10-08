@@ -25,6 +25,7 @@ import { AddclientComponent } from './components/Accueil/addclient/addclient.com
 import { FooterComponent } from './components/Accueil/footer/footer.component';
 
 import '@angular/localize/init';
+import { LoginformComponent } from './components/Accueil/loginform/loginform.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import '@angular/localize/init';
     NavbarComponent,
     SliderComponent,
     AddclientComponent,
-    FooterComponent
+    FooterComponent,
+    LoginformComponent
   ],
   imports: [
     BrowserModule,

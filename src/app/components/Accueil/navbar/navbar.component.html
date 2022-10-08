@@ -86,11 +86,11 @@
                              <img src="./../assets/icon/call.png" height="15" alt="img" style="max-width: 30px; max-height: 15px;margin-top: -5px;  "/>CONTACT</a>
                       </li>
                   </ul>
-                  <div class="d-flex inline my-2 my-lg-0" style="font-family:Georgia, 'Times New Roman', Times, serif;">
-                    <button type="button" class="btn btn-link px-3 me-2" style="color: #e45c30;">
+                  <div class="d-flex inline my-2 my-lg-0" style="font-family:Georgia, 'Times New Roman', Times, serif;" >
+                    <button type="button" class="btn btn-link px-3 me-2" style="color: #e45c30;" (click)="change_login_status()"> 
                         Connexion
                     </button>
-                    <button type="button" class="btn  me-3" style="background-color: #e45c30;  color: white;">
+                    <button type="button" class="btn  me-3" style="background-color: #e45c30;  color: white;" (click)="change_reg_status()">
                       <a href="#addcli">Enregister</a>
                     </button>
                   
@@ -219,7 +219,7 @@
                 <span ngbDropdownItem> Utilisateur : {{username}} </span>
                 
                 <span ngbDropdownItem> Nom : {{user_lname}} {{user_name}} </span>
-                <span ngbDropdownItem> Id : {{user_id}} </span>
+                <span ngbDropdownItem> Id : {{card_id_or_passeport}} </span>
                 <div class="dropdown-divider"></div>
                 <button type="button" (click)="userlogout($event)" ngbDropdownItem>Déconnecter</button>
                 

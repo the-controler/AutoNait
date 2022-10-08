@@ -34,11 +34,12 @@ export class AddclientComponent implements OnInit {
   token:any;
   user = new User();
   users:any;
-  loginfalse=false;
+  login_status:any;
   constructor(private dataService:ServicesService
     ,private _formBuilder: UntypedFormBuilder,private router: Router) { }
 
   ngOnInit(): void {
+    this.login_status=localStorage.getItem('registeruser');
   }
   AddUser(){
 
@@ -82,11 +83,9 @@ export class AddclientComponent implements OnInit {
       this.logsubmitted = true;
         this.dataService.loginUser(this.user).subscribe(res =>{
           this.data = res;
-          //console.log(res);
           if(this.data.status ===1) {
             this.token = this.data.data.token;
             localStorage.setItem('token', this.token);
-            console.log(this.token);
             this.router.navigate(['/']).then(() => {
               window.location.reload();
             });
@@ -98,8 +97,7 @@ export class AddclientComponent implements OnInit {
         ,
        (error) => {
          console.error('error caught in component')
-         this.loginfalse = true;
-         console.log("not workkk");
+         
        });
 
 

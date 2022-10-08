@@ -15,17 +15,23 @@ export class NavbarComponent implements OnInit {
   token:any;
   user_id:any;
   username:any;
+  loginuser:any=false;
+  register:any=true;
+  tester:any;
+  card_id_or_passeport: any;
+  driving_license: any;
+  age: any;
+  
   constructor(private dataService:ServicesService ,private router: Router) { }
 
   ngOnInit(): void {
     this.GetAllItems();
+    this. getUserInfo();
+
   }
   GetAllItems(){
     this.token=localStorage.getItem('token');
-      this.user_id=localStorage.getItem('user_card_id_or_passeport');
-      this.user_name=localStorage.getItem('user_fname');
-      this.user_lname=localStorage.getItem('user_lname');
-      this.username=localStorage.getItem('username');
+     
       
       if(this.token!=null){
         this.nocli=false;
@@ -44,5 +50,50 @@ export class NavbarComponent implements OnInit {
       
    
     }
+
     
+    change_login_status(){
+      this.loginuser=true;
+      localStorage.setItem('loginuser', this.loginuser);
+      this.register = false;
+      localStorage.setItem('registeruser', this.register);  
+     this.router.navigate(['/']).then(() => {
+       window.location.reload();
+     });
+        }
+    change_reg_status(){
+
+      this.register=true;
+
+      localStorage.setItem('registeruser', this.register);
+
+      this.loginuser=false;
+      localStorage.setItem('loginuser', this.loginuser);   
+      this.router.navigate(['/']).then(() => {
+        window.location.reload();
+      });
+    }
+    getUserInfo() {
+      const token = this.getToken();
+      let payload;
+      if (token) {
+        payload = token.split(".")[1];
+        payload = window.atob(payload);
+        this.card_id_or_passeport=JSON.parse(payload).card_id_or_passeport;
+        this.user_name=JSON.parse(payload).first_name;
+        this.driving_license=JSON.parse(payload).driving_license;
+        this.age=JSON.parse(payload).age;
+        this.user_lname=JSON.parse(payload).last_name;
+        this.username=JSON.parse(payload).username;
+        this.user_id=JSON.parse(payload).user_id;
+
+        return JSON.parse(payload);
+      } else {
+        return null;
+      }
+    }
+    
+     getToken() {
+      return localStorage.getItem("token");
+    }
 }

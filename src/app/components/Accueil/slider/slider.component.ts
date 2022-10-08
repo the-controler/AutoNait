@@ -45,6 +45,9 @@ export class SliderComponent implements OnInit {
   car_name:any;
   
   token:any;
+  card_id_or_passeport: any;
+  age: any;
+  username: any;
 
   constructor(private dataService:ServicesService 
     ,private calendar: NgbCalendar, public formatter: NgbDateParserFormatter,
@@ -61,13 +64,16 @@ cli=false;
 user_name:any;
 user_lname:any;
 pp='none';
+driving_license:any;
+
+
   ngOnInit(): void {
  
 
     this.GetAllItems();
 
 
-
+    this.getUserInfo();
 
      this.minPickerDate = {
       // year:   this.nyear , month:  this.nmonth , day: this.nday
@@ -84,10 +90,7 @@ pp='none';
 
 GetAllItems(){
 this.token=localStorage.getItem('token');
-  this.user_id=localStorage.getItem('user_card_id_or_passeport');
   this.car_name=localStorage.getItem('car');
-  this.user_name=localStorage.getItem('user_fname');
-  this.user_lname=localStorage.getItem('user_lname');
   if(this.token!=null){
     this.nocli=false;
     this.cli=true;
@@ -148,7 +151,6 @@ calcdays(){
 
      this.Time = this.date2.getTime() - this.date1.getTime(); 
      this.Days = this.Time / (1000 * 3600 * 24); //Diference in Days
-     console.log(this.Days);
      localStorage.setItem('debut', this.date1);
      localStorage.setItem('fin', this.date2);
      localStorage.setItem('num jr', this.Days);
@@ -161,6 +163,32 @@ return this.Days;
     }
 
 
+
+
+
+    getUserInfo() {
+      const token = this.getToken();
+      let payload;
+      if (token) {
+        payload = token.split(".")[1];
+        payload = window.atob(payload);
+        this.card_id_or_passeport=JSON.parse(payload).card_id_or_passeport;
+        this.user_name=JSON.parse(payload).first_name;
+        this.driving_license=JSON.parse(payload).driving_license;
+        this.age=JSON.parse(payload).age;
+        this.user_lname=JSON.parse(payload).last_name;
+        this.username=JSON.parse(payload).username;
+        this.user_id=JSON.parse(payload).user_id;
+
+        return JSON.parse(payload);
+      } else {
+        return null;
+      }
+    }
+    
+     getToken() {
+      return localStorage.getItem("token");
+    }
 }
 
 

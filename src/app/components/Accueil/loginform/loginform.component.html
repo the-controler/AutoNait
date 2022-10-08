@@ -1,0 +1,103 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!--Custom styles-->
+</head>
+<body>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Se connecter</h3>
+                <div *ngIf="logsubmitted">
+                    <div class="alert alert-success" role="alert">
+                        bienvenue !
+                    </div>
+                  </div><div *ngIf="inco">
+                    <div class="alert alert-danger" role="alert">
+                        Nom d'utilisateur ou le Mot de passe est incorrect!!!!
+                            </div>
+                   
+                  </div>
+			</div>
+			<div class="card-body">
+				<form [formGroup]="form">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" name="username" 
+                        formControlName="username" placeholder="Nom d'utilisateur" required [(ngModel)]="user.username" 
+                        [ngModel]="user.username" [ngClass]="{'is-invalid': submitted
+                                && f.username.errors}">
+
+                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                    <div *ngIf="f.username.errors.required">
+                                        username est obligatoire
+                                    </div>
+
+                                </div>
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" name="password"
+                         formControlName="password" placeholder="Mot de passe" required [(ngModel)]="user.password"
+                         [ngModel]="user.password" [ngClass]="{'is-invalid': submitted
+                                && f.password.errors}">
+
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">
+                                        password est obligatoire
+                                    </div>
+
+                                </div>
+					</div>
+					
+					<div class="form-group">
+						<input type="submit" value="Se connecter" (click)="login()" class="btn float-right login_btn">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					<a (click)="change_reg_status()" href="/">créer un compte ?</a>
+				</div>
+				<div class="d-flex justify-content-center" id="fpassword" data-title="en cas de mot de passe oublié, 
+                veuillez nous contacter sur whatsapp : +212 621232941 avec votre nom d'utilisateur et 
+                votre numéro de CNE ou de passeport avec lequel vous vous êtes inscrit.">
+					<a href="#" (click)="forg()" >Mot de passe oublié</a>
+                    <span id="boot-icon" class="bi bi-info" style="font-size: 10rem; color: rgb(255, 255, 255);"></span>
+
+				</div>
+                
+                  <div *ngIf="forgot">
+                    <div class="alert alert-warning" role="alert" style="width: 140%; margin: 0;" >
+                        en cas de mot de passe oublié, 
+                        veuillez nous contacter sur whatsapp : +212 621232941 avec votre nom d'utilisateur et 
+                        votre numéro de CNE ou de passeport avec lequel vous vous êtes inscrit.
+                      </div>
+                  </div>
+			</div>
+            
+		</div>
+	</div>
+</div>
+</body>
+</html>
