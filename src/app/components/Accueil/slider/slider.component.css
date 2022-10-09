@@ -2,9 +2,7 @@
   padding-right: 0px !important;
 }
 
-.false{
-  display: none;
-}
+
 #todo {
  
     background-color: black;
@@ -134,19 +132,39 @@ margin: 50px;
 }
 
 
-.noth{
+.h5{
+  position: absolute;
+  right: 0%; 
+  left: 95%;
+ color: white;
+ top: 14%;
+  background-color: black;
+ width: 15%;
+height: auto;
+padding: 0;
+margin: 0px;
+border: 1px solid #e45c30;
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+}
+.h2{
   position: absolute;
   right: 0%; 
   left: 85%;
  color: white;
- top: 20%;
+ top: 35%;
  font-size: large;
-  background-color: black;
- width: 400px;
+ width: 40%;
 height: auto;
 padding: 0;
 margin: 0px;
-
+font-size: 30px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
 }
 .title-right{
   position: absolute;
@@ -216,6 +234,29 @@ dp-hidden {
 .custom-day.faded {
   background-color: rgba(2, 117, 216, 0.5);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+#plusslider{
+left: 110%; 
+width: 2%;
+height: auto;
+}
+
+
+
+
+
+
 
 /* .html{
   background-color: black;

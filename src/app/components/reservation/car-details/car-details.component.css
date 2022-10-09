@@ -1,0 +1,8 @@
+.car_img{
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 40%, rgba(153,151,153,1) 60%, rgba(255,255,255,1) 100%);
+    width: auto;
+}
+.car_img >img{
+    width: 50%;
+}

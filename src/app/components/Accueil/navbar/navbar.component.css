@@ -1,9 +1,17 @@
 /* .logo{
     padding-right: 120px;
 } */
-ul{
+
+
+.container{
+    width: 100%;
     margin: auto;
 }
+ul{
+    margin: auto;
+    width: 100%;
+}
+
 a,a:hover, a:focus{
     display: block;
     color: inherit;
@@ -11,4 +19,16 @@ a,a:hover, a:focus{
 }
 body{
     background-color: black;
+}
+#dropdownForm1:focus{
+color: rgb(0, 0, 0);
+background-color: #e45c30;
+border-color: rgb(113 63 18);  
+webkit-box-shadow: none;
+box-shadow: none;
+}
+#dropdownForm1{
+    background-color: black;
+    border-color: #e45c30;
+    color: white;
 }

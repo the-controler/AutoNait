@@ -15,6 +15,20 @@
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+
+<style type="text/tailwindcss">
+
+
+@layer utilities {
+    #aler{
+        background-color: theme('colors.white');
+border-radius: theme('borderRadius.lg');
+padding: theme('spacing.6');
+box-shadow: theme('boxShadow.xl');      }
+    }
+
+
+</style>
 	<!--Custom styles-->
 </head>
 <body>
@@ -28,8 +42,8 @@
                         bienvenue !
                     </div>
                   </div><div *ngIf="inco">
-                    <div class="alert alert-danger" role="alert">
-                        Nom d'utilisateur ou le Mot de passe est incorrect!!!!
+                    <div class="alert alert-danger" role="alert" id="aler">
+                        <div >Nom d'utilisateur ou le Mot de passe est incorrect!!!!</div>
                             </div>
                    
                   </div>

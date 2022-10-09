@@ -1,92 +1,59 @@
 <body>
-<div class="todo">
-
-    <app-slider></app-slider>
-    <div class="html" id="brands">
-        <h1><b>Nos Marques</b></h1>
-        <a href="#">
-        
-        <img src="../../assets/brands/brand4.jpg">
-        <img src="../../assets/brands/brand5.jpg">
-        <img src="../../assets/brands/brand6.jpg">
-    </a>
-    </div>
-<div>
-    <h1><b>Nos Services</b></h1>
-<div>
-
-
-
-    <script>
-        function flip() {
-            $('.card').toggleClass('flipped');
-        }
-    </script>
-
-<section class="pt-5 pb-5" id="home_section">
-    <div class="container" >
-        <div class="row">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="col-12" >
-                <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
-
-                    <div class="carousel-inner" >
-                        <div class="carousel-item  active" >
-                            <div class="row" >
-
-                                <div class="col-md-4 mb-3" *ngFor="let car of cars">
-                                    <div class="card">
-                                       
-                                        <div class="all2" onclick="flip()" (click)="cardClicked()" [@cardFlip]="data.state" >
-                                            <a href="#addcli" ><div class="face_front">
-                                                <img class="card-img-top" src="{{car.image}}" alt="Card image cap" id="anivimage">
-
-
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{car.name}}</h5>
-                                                    <p class="card-text">{{car.description}}<br></p>
-                                                        
-                                                </div>
-                                                <div class="card-footer" style="padding:5%;">
-                                                     <small class="text-muted"><div>
-                                                        <span style="color: #e45c30;">{{car.price}} Dh </span>
-                                                        <span style="  opacity: 0.5;"> / Pour Jour</span></div>
-                                                    </small>
-                                                </div>
-                                            </div></a>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                
-                                
-
-                            </div>
-                        </div>
-                            <div class="carousel-item " >
+    <div class="todo">
+    
+        <app-slider></app-slider>
+        <div class="html" id="brands">
+            <h1><b>Nos Marques</b></h1>
+            <a href="#">
+            
+            <img src="../../assets/brands/brand4.jpg">
+            <img src="../../assets/brands/brand5.jpg">
+            <img src="../../assets/brands/brand6.jpg">
+        </a>
+        </div>
+    <div>
+        <h1><b>Nos Services</b></h1>
+    <div>
+    
+    
+    
+        <script>
+            function flip() {
+                $('.card').toggleClass('flipped');
+            }
+        </script>
+    
+    <section class="pt-5 pb-5" id="home_section">
+        <div class="container" >
+            <div class="row">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                <div class="col-12" >
+                    <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+    
+                        <div class="carousel-inner" >
+                            <div class="carousel-item  active" >
                                 <div class="row" >
     
                                     <div class="col-md-4 mb-3" *ngFor="let car of cars">
@@ -94,7 +61,8 @@
                                            
                                             <div class="all2" onclick="flip()" (click)="cardClicked()" [@cardFlip]="data.state" >
                                                 <a href="#addcli" ><div class="face_front">
-                                                    <img class="card-img-top" src="{{car.image}}" alt="Card image cap" id="anivimage">
+                                                    <img class="card-img-top" src="{{car.image}}" alt="Card image cap" id="anivimage" style="background: rgb(0,0,0);
+                                                    background: linear-gradient(180deg, rgba(0,0,0,1) 40%, rgba(153,151,153,1) 60%, rgba(255,255,255,1) 100%);">
     
     
                                                     <div class="card-body">
@@ -102,10 +70,24 @@
                                                         <p class="card-text">{{car.description}}<br></p>
                                                             
                                                     </div>
-                                                    <div class="card-footer" style="padding:5%;">
-                                                         <small class="text-muted"><div>
-                                                            <span style="color: #e45c30;">{{car.price}} Dh </span>
-                                                            <span style="  opacity: 0.5;"> / Pour Jour</span></div>
+                                                    <div class="card-footer" >
+                                                         <small class="text-muted">
+                                                            <div>
+                                                                <div style="color: #ADB5BD;">
+                                                                    À partir de   
+                                                                    <span style="color: #e45c30; font-size: 28px;">
+                                                                         {{car.price}} 
+                                                                    </span> MAD 
+                                                                    <span style="  opacity: 0.5;">
+                                                                         / Par Jour
+                                                                        </span>
+                                                                    </div>
+    
+    
+    
+    
+                                                            
+                                                            </div>
                                                         </small>
                                                     </div>
                                                 </div></a>
@@ -119,36 +101,109 @@
     
                                 </div>
                             </div>
-
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true" onclick="plusDivs(-1)"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true" onclick="plusDivs(1)"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-
-
-
-
-        </div>
-    </div>
-</section>
-
-
-
-</div>
-</div>
-
+                                <div class="carousel-item " >
+                                    <div class="row" >
+        
+                                        <div class="col-md-4 mb-3" *ngFor="let car of cars">
+                                            <div class="card">
+                                               
+                                                <div class="all2" onclick="flip()" (click)="cardClicked()" [@cardFlip]="data.state" >
+                                                    <a href="#addcli" ><div class="face_front">
+                                                        <img class="card-img-top" src="{{car.image}}" alt="Card image cap" id="anivimage" style="background: rgb(0,0,0);
+                                                        background: linear-gradient(180deg, rgba(0,0,0,1) 40%, rgba(153,151,153,1) 60%, rgba(255,255,255,1) 100%);">
+        
+        
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">{{car.name}}</h5>
+                                                            <p class="card-text">{{car.description}}<br></p>
+                                                                
+                                                        </div>
+                                                        <div class="card-footer" style="">
+                                                             <small class="text-muted">
+                                                             
+                                                                <div style="color: #ADB5BD;">
+                                                                    À partir de 
+                                                                    <span style="color: #e45c30; font-size: 30px;">
+                                                                        {{car.price}} 
+                                                                    </span>MAD 
+                                                                    <span style="  opacity: 0.5;">
+                                                                         / Par Jour
+                                                                        </span>
+                                                                    </div>
+                                                            
+                                                            </small>
+                                                        </div>
+                                                    </div></a>
+        
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        
+                                        
+        
+                                    </div>
+                                </div>
     
-<div class="centered">      <app-navbar></app-navbar>   </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true" onclick="plusDivs(-1)"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true" onclick="plusDivs(1)"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+    
+    
+    
+    
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    </div>
+    </div>
+    
+        
+    <div class="centered">      <app-navbar></app-navbar>   </div>
+    
+    
+    
+    
+    
+        <div class="ll-service-area">
+            <div class="container">
+              <h1 class="ll-service__title text-center font-extralight mb-12">Guide - Comment Utiliser</h1><br>
+              <div class="ll-services grid grid-cols-12 gap-8" id="alle" >
+                <div class="ll-service col-span-12 sm:col-span-6 lg:col-span-3" id="howw">
+                  <div class="number">01</div>
+                  <h3 class="mb-2">S'inscrire Ou Se Connecter</h3>
+                  <p>Créez un compte si vous n'en avez pas, si vous êtes déjà membre de notre famille, connectez-vous.</p>
+                </div>
+                <div class="ll-service col-span-12 sm:col-span-6 lg:col-span-3" id="howw">
+                  <div class="number">02</div>
+                  <h3 class="mb-2">Choisir La Voiture</h3>
+                  <p>choisissez la voiture que vous voulez réserver et la date de la réservation.</p>
+                </div>
+                <div class="ll-service col-span-12 sm:col-span-6 lg:col-span-3" id="howw">
+                  <div class="number">03</div>
+                  <h3 class="mb-2">Compléter La Réservation</h3>
+                  <p>Continuer à remplir le formulaire de réservation .</p>
+                </div>
+                <div class="ll-service col-span-12 sm:col-span-6 lg:col-span-3" id="howw">
+                  <div class="number">04</div>
+                  <h3 class="mb-2">Confirmation</h3>
+                  <p>en remplissant le formulaire de réservation ,vous avez terminé la dernière étape votre réservation est complète ,attendez votre voiture.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <app-footer></app-footer>
 
-
-
-
-    <app-footer></app-footer></div>
-</body>
+    </div>
+    </body>

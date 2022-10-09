@@ -26,6 +26,9 @@ import { FooterComponent } from './components/Accueil/footer/footer.component';
 
 import '@angular/localize/init';
 import { LoginformComponent } from './components/Accueil/loginform/loginform.component';
+import {MatIconModule} from '@angular/material/icon';
+import { CarDetailsComponent } from './components/reservation/car-details/car-details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,10 +37,12 @@ import { LoginformComponent } from './components/Accueil/loginform/loginform.com
     SliderComponent,
     AddclientComponent,
     FooterComponent,
-    LoginformComponent
+    LoginformComponent,
+    CarDetailsComponent,
   ],
   imports: [
     BrowserModule,
+    MatIconModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

@@ -51,7 +51,7 @@ body{
 }
 
 .tab-content {
-    margin-left: 100px;
+    margin-left: 10%;
     display: flex;
     justify-content: center;
     padding: 30px;
@@ -69,7 +69,8 @@ body{
    
 }
 .nav-item > a:hover {
-    color:  #e45c30;
+    background-color:  #ffffff;
+    color: #000000;
   }
   .nav-item > .active  > a:hover  {
     color:  #ffffff;
@@ -124,3 +125,47 @@ margin-right: 10%;
         color: inherit;
         text-decoration: inherit;
     }
+
+
+
+
+
+
+
+
+
+
+
+    .well {
+        min-height: 20px;
+        padding: 11px;
+        top:0%;
+                margin-bottom: 20px;
+        border-radius: 4px;
+        width: 120%;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        position: absolute;
+        border-style: solid;
+        border:  14px;
+        
+        border-color:  rgba(0, 0, 0, 0.15);
+
+      }
+      iframe{
+        border-color: 10px rgba(0, 0, 0, 0.15);
+
+      }
+      .well blockquote {
+        border-color: rgba(0, 0, 0, 0.15);
+      }
+      
+      .well-lg {
+        padding: 24px;
+        border-radius: 6px;
+      }
+      
+      .well-sm {
+        padding: 9px;
+        
+      }

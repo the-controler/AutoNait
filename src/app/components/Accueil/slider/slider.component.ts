@@ -51,7 +51,7 @@ export class SliderComponent implements OnInit {
 
   constructor(private dataService:ServicesService 
     ,private calendar: NgbCalendar, public formatter: NgbDateParserFormatter,
-    private _formBuilder: UntypedFormBuilder) { 
+    private _formBuilder: UntypedFormBuilder,private router: Router) { 
 
 
      this.fromDate = calendar.getToday();
@@ -89,9 +89,9 @@ driving_license:any;
 
 
 GetAllItems(){
-this.token=localStorage.getItem('token');
+  this.getUserInfo();
   this.car_name=localStorage.getItem('car');
-  if(this.token!=null){
+  if(this.username!=null){
     this.nocli=false;
     this.cli=true;
 
@@ -154,6 +154,9 @@ calcdays(){
      localStorage.setItem('debut', this.date1);
      localStorage.setItem('fin', this.date2);
      localStorage.setItem('num jr', this.Days);
+     this.router.navigate(['/:'+this.car_name]).then(() => {
+      window.location.reload();
+    });
 return this.Days;
     }
 

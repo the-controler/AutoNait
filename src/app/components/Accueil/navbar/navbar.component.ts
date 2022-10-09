@@ -30,10 +30,9 @@ export class NavbarComponent implements OnInit {
 
   }
   GetAllItems(){
-    this.token=localStorage.getItem('token');
      
-      
-      if(this.token!=null){
+    this.getUserInfo();
+      if(this.user_name!=null){
         this.nocli=false;
         this.cli=true;
     
