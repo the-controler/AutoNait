@@ -41,11 +41,14 @@
 
 
 .card-footer{
-    padding:1%;
+    padding-bottom:2%;
     display: flex;
     justify-content: center;
+    padding-top: 0%;
 }
-
+#card_btn{
+  padding-top: 2%;
+}
 
 .one {
     padding-left: 50px;

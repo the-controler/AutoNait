@@ -28,6 +28,8 @@ import '@angular/localize/init';
 import { LoginformComponent } from './components/Accueil/loginform/loginform.component';
 import {MatIconModule} from '@angular/material/icon';
 import { CarDetailsComponent } from './components/reservation/car-details/car-details.component';
+import { CarViewComponent } from './components/car/car-view/car-view.component';
+import { Error404pageComponent } from './components/error/error404page/error404page.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { CarDetailsComponent } from './components/reservation/car-details/car-de
     FooterComponent,
     LoginformComponent,
     CarDetailsComponent,
+    CarViewComponent,
+    Error404pageComponent,
   ],
   imports: [
     BrowserModule,

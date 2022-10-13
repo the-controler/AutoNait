@@ -1,7 +1,9 @@
 import { Component, OnInit , ChangeDetectionStrategy } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ServicesService } from 'src/app/service/services.service';
-
+import { SliderComponent } from '../slider/slider.component';
+import { UntypedFormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
@@ -27,8 +29,6 @@ export class BodyComponent implements OnInit {
 
   cars:any;
 
-
-
   data: any = {
     imageId: "pDGNBK9A0sk",
     state: "default"
@@ -45,13 +45,17 @@ export class BodyComponent implements OnInit {
     imageId: "pDGNBK9A0sk",
     state: "default"
   };
+  car_name: any;
+  username: any;
+  cli: boolean=false;
 
 
-  constructor(private dataService:ServicesService ) { }
+  constructor(private dataService:ServicesService ,private router: Router) { }
 
   ngOnInit(): void {
     this.getcars();
-
+    this.car_name=localStorage.getItem('car');
+this.GetAllItems();
   }
   getcars(){
     this.dataService.getcars().subscribe(res => {
@@ -62,7 +66,13 @@ export class BodyComponent implements OnInit {
   save_id_car($id: any){
     localStorage.setItem('car', $id);
   }
-
+  details_car(){
+    console.log(this.car_name);
+    this.router.navigate(['/'+this.car_name+'/details']).then(() => {
+      window.location.reload();
+    });
+  }
+ 
   cardClicked() {
     if (this.data.state === "default") {
       this.data.state = "flipped";
@@ -92,4 +102,33 @@ export class BodyComponent implements OnInit {
     }
   }
 
+  GetAllItems(){
+     
+    this.getUserInfo();
+      if(this.username!=null){
+        this.cli=true;
+    
+      }
+     
+    }
+
+  getUserInfo() {
+    const token = this.getToken();
+    let payload;
+    if (token) {
+      payload = token.split(".")[1];
+      payload = window.atob(payload);
+
+      
+      this.username=JSON.parse(payload).username;
+
+      return JSON.parse(payload);
+    } else {
+      return null;
+    }
+  }
+  
+   getToken() {
+    return localStorage.getItem("token");
+  }
 }

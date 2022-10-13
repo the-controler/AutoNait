@@ -1,4 +1,4 @@
-<body>
+<body ng-app="">
     <div class="todo">
     
         <app-slider></app-slider>
@@ -60,7 +60,7 @@
                                         <div class="card">
                                            
                                             <div class="all2" onclick="flip()" (click)="cardClicked()" [@cardFlip]="data.state" >
-                                                <a href="#addcli" ><div class="face_front">
+                                                <div class="face_front">
                                                     <img class="card-img-top" src="{{car.image}}" alt="Card image cap" id="anivimage" style="background: rgb(0,0,0);
                                                     background: linear-gradient(180deg, rgba(0,0,0,1) 40%, rgba(153,151,153,1) 60%, rgba(255,255,255,1) 100%);">
     
@@ -81,16 +81,33 @@
                                                                     <span style="  opacity: 0.5;">
                                                                          / Par Jour
                                                                         </span>
+                                                                       
                                                                     </div>
+                                                                    <input hidden value="{{cli}}" name="cli">
+                                                                <div *ngIf="cli;else nocli">
+                                                                    <p class="d-flex mb-0 d-block" style="color:white;" id="card_btn">
+                                                                        
+                                                                        <a  class="btn btn-primary py-2 mr-1"  
+                                                                        (click)='save_id_car(car.name)'   type="submit" data-toggle="modal"
+                                                                        data-target="#exampleModal">
+                                                                            Réserver
+                                                                        </a> 
+                                                                        <a (click)='save_id_car(car.name)' (click)="details_car()" class="btn btn-secondary py-2 ml-1">Voir Détails</a></p>
     
-    
-    
-    
-                                                            
+                                                                    </div>
+                                                            <ng-template #nocli>
+                                                                <p class="d-flex mb-0 d-block" style="color:white;" id="card_btn">
+                                                                        
+                                                                    <a  class="btn btn-primary py-2 mr-1"  
+                                                                     type="submit" href="#guide">
+                                                                        Réserver
+                                                                    </a> 
+                                                                    <a (click)='save_id_car(car.name)' (click)="details_car()" class="btn btn-secondary py-2 ml-1">Voir Détails</a></p>
+                                                            </ng-template>
                                                             </div>
                                                         </small>
                                                     </div>
-                                                </div></a>
+                                                </div>
     
                                             </div>
     
@@ -108,7 +125,7 @@
                                             <div class="card">
                                                
                                                 <div class="all2" onclick="flip()" (click)="cardClicked()" [@cardFlip]="data.state" >
-                                                    <a href="#addcli" ><div class="face_front">
+                                                    <div class="face_front">
                                                         <img class="card-img-top" src="{{car.image}}" alt="Card image cap" id="anivimage" style="background: rgb(0,0,0);
                                                         background: linear-gradient(180deg, rgba(0,0,0,1) 40%, rgba(153,151,153,1) 60%, rgba(255,255,255,1) 100%);">
         
@@ -118,7 +135,7 @@
                                                             <p class="card-text">{{car.description}}<br></p>
                                                                 
                                                         </div>
-                                                        <div class="card-footer" style="">
+                                                        <div class="card-footer" >
                                                              <small class="text-muted">
                                                              
                                                                 <div style="color: #ADB5BD;">
@@ -128,12 +145,32 @@
                                                                     </span>MAD 
                                                                     <span style="  opacity: 0.5;">
                                                                          / Par Jour
-                                                                        </span>
+                                                                        </span><br>
+                                                                       
                                                                     </div>
-                                                            
+                                                                    <div *ngIf="cli;else nocli">
+                                                                        <p class="d-flex mb-0 d-block" style="color:white;" id="card_btn">
+                                                                            
+                                                                            <a  class="btn btn-primary py-2 mr-1"  
+                                                                            (click)='save_id_car(car.name)'   type="submit" data-toggle="modal"
+                                                                            data-target="#exampleModal">
+                                                                                Réserver
+                                                                            </a> 
+                                                                            <a (click)='save_id_car(car.name)' (click)="details_car()" class="btn btn-secondary py-2 ml-1">Voir Détails</a></p>
+        
+                                                                        </div>
+                                                                <ng-template #nocli>
+                                                                    <p class="d-flex mb-0 d-block" style="color:white;" id="card_btn">
+                                                                            
+                                                                        <a  class="btn btn-primary py-2 mr-1"  
+                                                                         type="submit" href="#addcli">
+                                                                            Réserver
+                                                                        </a> 
+                                                                        <a (click)='save_id_car(car.name)' (click)="details_car()" class="btn btn-secondary py-2 ml-1">Voir Détails</a></p>
+                                                                </ng-template>
                                                             </small>
                                                         </div>
-                                                    </div></a>
+                                                    </div>
         
                                                 </div>
         
@@ -198,7 +235,10 @@
                 <div class="ll-service col-span-12 sm:col-span-6 lg:col-span-3" id="howw">
                   <div class="number">04</div>
                   <h3 class="mb-2">Confirmation</h3>
-                  <p>en remplissant le formulaire de réservation ,vous avez terminé la dernière étape votre réservation est complète ,attendez votre voiture.</p>
+                  <p>en remplissant le formulaire de réservation ,
+                    vous avez terminé la dernière étape votre réservation est complète ,
+                    vous serez redirigé vers whatsapp avec toutes les informations choisies, 
+                    attendez notre réponse de disponibilité de la voiture choisie.</p>
                 </div>
               </div>
             </div>

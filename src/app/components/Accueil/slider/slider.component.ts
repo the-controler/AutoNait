@@ -87,7 +87,6 @@ driving_license:any;
 
   }
 
-
 GetAllItems(){
   this.getUserInfo();
   this.car_name=localStorage.getItem('car');
@@ -97,12 +96,16 @@ GetAllItems(){
 
   }
 }
-
+details_car(){
+  this.router.navigate(['/:'+this.car_name+'/details']).then(() => {
+    window.location.reload();
+  });
+}
 
   getcars(){
     this.dataService.getcars().subscribe(res => {
     this.cars = res;
- 
+    
     });
   }
   save_id_car($id: any){

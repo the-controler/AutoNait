@@ -243,6 +243,11 @@ dp-hidden {
 
 
 
+#plussliderv1{
+  width: 2%;
+  height: auto;
+  right:2%;
+  }
 
 
 
@@ -251,7 +256,11 @@ left: 110%;
 width: 2%;
 height: auto;
 }
-
+#prevslider{
+  left: 2%; 
+  width: 2%;
+  height: auto;
+  }
 
 
 

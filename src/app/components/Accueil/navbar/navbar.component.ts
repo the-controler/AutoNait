@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
   GetAllItems(){
      
     this.getUserInfo();
-      if(this.user_name!=null){
+      if(this.username!=null){
         this.nocli=false;
         this.cli=true;
     

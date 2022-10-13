@@ -14,6 +14,9 @@ export class ServicesService {
   getCarByName(name:any){
     return this.httpClient.get('https://autobackn.herokuapp.com/api/car_name/'+name);
   }
+  getCarImageByName(name:any){
+    return this.httpClient.get('https://autobackn.herokuapp.com/api/get_car_image_by_name/'+name);
+  }
   registerUser(data: any){
     return this.httpClient.post('https://autobackn.herokuapp.com/api/registerUser',data);
   }
