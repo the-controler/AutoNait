@@ -245,21 +245,24 @@ dp-hidden {
 
 #plussliderv1{
   width: 2%;
-  height: auto;
-  right:2%;
+  top: 50%;
+  height: 1%;
+    right:2%;
   }
 
 
 
 #plusslider{
-left: 110%; 
+left: 120%; 
 width: 2%;
-height: auto;
+top: 50%;
+  height: 1%;
 }
 #prevslider{
   left: 2%; 
   width: 2%;
-  height: auto;
+  top: 50%;
+  height: 1%;
   }
 
 

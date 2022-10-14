@@ -5,7 +5,18 @@
     justify-content: center;
     text-align: center;
 }
-
+#plusslider{
+  left: 100%; 
+  width: 2%;
+  top: 50%;
+    height: 1%;
+  }
+  #prevslider{
+    left: -8%; 
+    width: 2%;
+    top: 50%;
+    height: 1%;
+    }
 .centered {
     position: absolute;
     top: 0%;
