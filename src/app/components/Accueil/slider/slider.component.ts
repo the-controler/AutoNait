@@ -48,6 +48,8 @@ export class SliderComponent implements OnInit {
   card_id_or_passeport: any;
   age: any;
   username: any;
+  date10: string;
+  date20: string;
 
   constructor(private dataService:ServicesService 
     ,private calendar: NgbCalendar, public formatter: NgbDateParserFormatter,
@@ -56,8 +58,11 @@ export class SliderComponent implements OnInit {
 
      this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+
+
   }
 cars:any;
+test:Date;
 
 nocli=true;
 cli=false;
@@ -65,8 +70,9 @@ user_name:any;
 user_lname:any;
 pp='none';
 driving_license:any;
-
-
+day:any;
+month:any;
+year:any;
   ngOnInit(): void {
  
 
@@ -81,7 +87,7 @@ driving_license:any;
       month: new Date().getMonth() + 1,
       day: new Date().getDate()
      } ;
-
+     const dat =this.minPickerDate.day
     this.getcars();
     
 
@@ -151,11 +157,34 @@ details_car(){
 calcdays(){
   this.date1 =this.createDateFromNgbDate(this.fromDate!);
   this.date2 =this.createDateFromNgbDate(this.toDate!);
+  this.day=this.fromDate!.day;
+  if(this.day<10 ){
+    this.day="0"+this.fromDate!.day;
+  }
+  this.month=this.fromDate!.month;
+  if(this.month<10){
+    this.month="0"+this.fromDate!.month;
+  }
+  
+this.year=this.fromDate!.year;
+this.date10=this.year+"-"+this.month+"-"+this.day;
+localStorage.setItem('debut', this.date10);
+
+this.day=this.toDate!.day;
+if(this.day<10 ){
+  this.day="0"+this.toDate!.day;
+}
+this.month=this.toDate!.month;
+if(this.month<10){
+  this.month="0"+this.toDate!.month;
+}
+
+this.year=this.toDate!.year;
+this.date20=this.year+"-"+this.month+"-"+this.day;
+localStorage.setItem('fin', this.date20);
 
      this.Time = this.date2.getTime() - this.date1.getTime(); 
      this.Days = this.Time / (1000 * 3600 * 24); //Diference in Days
-     localStorage.setItem('debut', this.date1);
-     localStorage.setItem('fin', this.date2);
      localStorage.setItem('num jr', this.Days);
      this.router.navigate(['/:'+this.car_name]).then(() => {
       window.location.reload();

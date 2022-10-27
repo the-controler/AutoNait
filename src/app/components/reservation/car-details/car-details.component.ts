@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Car } from 'src/app/class/car';
+import { Place } from 'src/app/class/place';
 import { Reservation } from 'src/app/class/resevation';
 import { User } from 'src/app/class/user';
 import { ServicesService } from 'src/app/service/services.service';
+import { enableRipple } from '@syncfusion/ej2-base';
 
 @Component({
   selector: 'app-car-details',
@@ -14,16 +17,51 @@ export class CarDetailsComponent implements OnInit {
   cars:any;
   the_car_selected:any;
   car = new Car;
-  
+  places:any;
+  place = new Place;
   user_id:any;
   user =new User;
   cli: boolean=false;
   res = new Reservation;
-  constructor(private dataService:ServicesService,private router: Router) { }
-
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
+  fiveFormGroup: FormGroup;
+    selectedCard: any;
+  place_id: any;
+  constructor(private dataService:ServicesService,private router: Router,private _formBuilder: FormBuilder,private cdr: ChangeDetectorRef) { }
+  public watermark: string = 'Select a time';
+  // sets the format property to display the time value in 24 hours format.
+  public formatString: string = 'HH:mm';
+  public interval: number = 60;
   ngOnInit(): void {
+    
     this.get_car_selected();
     this.GetAllItems();
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required],
+      secondCtrl: ['', Validators.required],
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      thirdCtrl: ['', Validators.required],
+      fourthCtrl: ['', Validators.required],
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      fifthCtrl: ['', Validators.required],
+      sixthCtrl: ['', Validators.required],
+      seventhCtrl: ['', Validators.required],
+    });
+    this.fourthFormGroup = this._formBuilder.group({
+      eightthCtrl: ['', Validators.required],
+
+    });
+    this.fiveFormGroup = this._formBuilder.group({
+      ninethCtrl: ['', Validators.required],
+
+    });
+    
+    this.getPickup();
   }
   select_car(name:any){
     this.dataService.getCarByName(name).subscribe(res => {
@@ -31,6 +69,12 @@ export class CarDetailsComponent implements OnInit {
     this.car= this.cars;
     });
   }
+  getPickup(){
+      this.dataService.getPlaces().subscribe(res => {
+        this.places = res;
+
+  });
+}
   get_car_selected(){
     this.the_car_selected =localStorage.getItem("car");
     if(this.the_car_selected != null){
@@ -38,6 +82,12 @@ export class CarDetailsComponent implements OnInit {
       
     }
   }
+  public selectCard0(card: any): void {
+    this.selectedCard = card;
+    this.cdr.detectChanges();
+    this.place_id=card.id;
+    console.log(this.selectedCard.id);
+}
 getResInfo(){
   this.res.car_name=localStorage.getItem("car");
   this.res.days=localStorage.getItem("num jr");
@@ -45,6 +95,7 @@ getResInfo(){
   this.res.date_debut=localStorage.getItem("debut");
   this.res.date_fin=localStorage.getItem("fin");
   
+
 }
 
   getUserInfo() {
@@ -74,6 +125,8 @@ getResInfo(){
   GetAllItems(){
      
     this.getUserInfo();
+    this.getResInfo();
+
       if(this.user.username!=null){
        
         this.cli=true;

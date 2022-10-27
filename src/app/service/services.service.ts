@@ -23,5 +23,7 @@ export class ServicesService {
   loginUser(data: any){
     return this.httpClient.post('https://autobackn.herokuapp.com/api/login',data);
   }
- 
+  getPlaces(){
+    return this.httpClient.get('https://autobackn.herokuapp.com/api/places');
+  }
 }

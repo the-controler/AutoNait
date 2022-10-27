@@ -22,42 +22,60 @@
         <div id="booking" class="section">
             <div class="section-center">
               <div class="container">
-                <div class="row">
+                <div class="row" id="todo">
                   <div class="booking-form">
                     <div class="form-header">
                       <h1>Make your reservation</h1>
                     </div>
-                    <form>
-                      <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Nom d'utilisateur" disabled>
-                        <input hidden class="form-control" type="text" name="user_id" disabled>
-
-                        <span class="form-label">Destination</span>
-                      </div>
-                      <div class="row">
+                    <form [formGroup]="firstFormGroup">
+                      <div class="row"id="column ">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input class="form-control" type="date" required disabled>
+                            <input class="form-control" type="text" placeholder="Nom d'utilisateur" value="{{user.username}}" disabled>
+                            <span class="form-label">Nom d'utilisateur :</span>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <input  class="form-control" type="text" name="user_id" value="{{res.id_user}}" disabled>
+                            <span class="form-label">ID : </span>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <form  [formGroup]="secondFormGroup">
+                      <div class="row"id="column ">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <input class="form-control" type="date" required value="{{res.date_debut}}" disabled >
                             <span class="form-label">DÉPART</span>
                           </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                           <div class="form-group">
-                            <input class="form-control" type="date" required disabled>
+                            <input class="form-control" type="date" required disabled value="{{res.date_fin}}">
                             <span class="form-label">RETOUR </span>
                           </div>
                         </div>
-                      </div>
-                      <div class="row">
                         <div class="col-md-4">
                           <div class="form-group">
-                            <input class="form-control" type="text" required disabled>
+                            <input class="form-control" type="text" required  value="{{res.date_fin}}">
+                            <span class="form-label">temp </span>
+                          </div>
+                                               </div>
+                      </div>
+                      </form>
+                      <form [formGroup]="thirdFormGroup">
+                        <div class="row"id="column ">
+                          <div class="col-md-4">
+                          <div class="form-group">
+                            <input class="form-control" type="text" required value="{{res.days}}" disabled>
                             <span class="form-label">N° jour </span>
                           </div>
                         </div>
                         <div class="col-md-4">
-                          <div class="form-group">
-                            <input class="form-control" type="text" required disabled>
+                          <div class="form-group" >
+                            <input class="form-control" type="text" required disabled value="{{res.car_name}}" style="width:110%">
                             <span class="form-label">Voiture </span>
                             
                           </div>
@@ -65,32 +83,49 @@
                         <div class="col-md-4">
                           <div class="form-group">
 
-                            <input class="form-control" type="text" required disabled>
-                            <span class="form-label">place </span>
-                            <!-- <select class="form-control" required>
-                              <option value="" selected hidden>no of children</option>
-                              <option>0</option>
-                              <option>1</option>
-                              <option>2</option>
-                            </select>
-                            <span class="select-arrow"></span>
-                            <span class="form-label">Children</span> -->
+                            <input class="form-control" type="text" required value="{{car.price}} MAD" disabled>
+                            <span class="form-label">prix /jr </span>
+                            
                           </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-md-6">
+                      </form>
+                      <form [formGroup]="fourthFormGroup">
+                        <div class="row"id="column ">
+                          <div class="col-md-6">
                           <div class="form-group">
-                            <input class="form-control" type="text" disabled>
-                            <span class="form-label">prix</span>
+                            <div class="card-wrapper">
+                              <div class="row"id="column ">
+                                <mat-label class="label">place</mat-label>
+<br>
+                              <igx-card *ngFor="let card of places" (click)="selectCard0(card)"
+                                  [ngClass]="{'selected-card': selectedCard === card}" class="pic">
+                                  <div class="inline-block">
+                                  <div class="row1" >
+                                      <div class="card"  >
+                                  <igx-card-media  >
+                                      <igx-badge *ngIf="selectedCard === card" value="Votre choix actuel"></igx-badge>
+                                      <img src="{{card.image}}" alt="Pick up"  >
+                                      <mat-label> {{card.name}}</mat-label>
+                                      <input hidden value="{{card.name}}">
+                                     </igx-card-media>
+                                  </div>
+                              </div>
+                            </div>
+                                  </igx-card>
+                              </div>
+                      </div>
                           </div>
                         </div>
-                         <div class="col-md-6">
-                          <div class="form-group">
-                            <input class="form-control" type="text" disabled>
-                            <span class="form-label">grantee</span>
-                          </div>
-                        </div> 
+                         
+                      </div>
+                      </form>
+                      <form [formGroup]="fiveFormGroup">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input class="form-control" type="text" disabled value="{{car.guarantee}}  MAD">
+                          <span class="form-label">grantee</span>
+                        </div>
                       </div>
                       <div class="form-btn">
                         <button class="submit-btn">Book Now</button>
@@ -105,5 +140,150 @@
   <ng-template #nocli>
     <app-error404page></app-error404page>
   </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="poto">
+    <div class="border">
+      <div class="sdu">
+        <div class="tok">€3,000.00</div>
+        <div class="fire">Price</div>
+      </div>
+      <div class="border-b p-5">
+        <ul class="service-info">
+          <li class="yaro">
+            <div class="masko">
+              <mat-icon class="betsno">check</mat-icon>
+              <strong class="natam">96</strong> interested persons
+            </div>
+          </li>
+          <li class="yaro">
+            <div class="masko">
+              <mat-icon class="betsno">check</mat-icon>
+              <strong class="natam">1 hours</strong> reaction time
+            </div>
+          </li>
+          <li class="yaro">
+            <div class="masko">
+              <mat-icon class="betsno">check</mat-icon>
+              <strong class="natam">12 hours</strong> delivery time
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="po">
+        <h5>Addons Services</h5>
+        <div class="fle">
+          <div class="sol">
+            <input type="checkbox" class="slj" />
+          </div>
+          <div class="flex">
+            <div class="pri">€200.00</div>
+            <h6 class="hito">Execution after work</h6>
+            <p class="mt-2">
+              Thanks to our home office approach, we can serve you during the entire microservice even after work, if that suits you
+              better. The following times are possible after close of business: sun - thu, 9 p.m. - 7 p.m.
+            </p>
+          </div>
+        </div>
+        <div class="eni">
+          <div class="bokowa">
+            <input type="checkbox" class="dohi" />
+          </div>
+          <div class="flex">
+            <div class="pri">€200.00</div>
+            <h6 class="hito">Execution after work</h6>
+            <p class="mt-2">
+              Thanks to our home office approach, we can serve you during the entire microservice even after work, if that suits you
+              better. The following times are possible after close of business: sun - thu, 9 p.m. - 7 p.m.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="ooo">
+        <p class="text-gray-400 mb-4">This price can increase due to additional bookings</p>
+        <button mat-flat-button class="plot" color="accent">Buy now</button>
+      </div>
+    </div>
+    <div class="iiiiii">
+      <p class="ppp">Do you have any special requirements?</p>
+      <button mat-stroked-button class="kho">Send us</button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
     </body>
 </html>

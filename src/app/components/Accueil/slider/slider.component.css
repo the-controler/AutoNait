@@ -268,7 +268,9 @@ top: 50%;
 
 
 
-
+.title-right > h1{
+font-size: 40px;
+}
 
 /* .html{
   background-color: black;

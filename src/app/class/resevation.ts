@@ -4,6 +4,7 @@ export class Reservation {
     days:any;
     date_debut:any;
     date_fin:any;
+    hour : any;
     place:any;
     price:any;
     status:any;
