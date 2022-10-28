@@ -6,7 +6,7 @@ import { Place } from 'src/app/class/place';
 import { Reservation } from 'src/app/class/resevation';
 import { User } from 'src/app/class/user';
 import { ServicesService } from 'src/app/service/services.service';
-import { enableRipple } from '@syncfusion/ej2-base';
+import { PickerInteractionMode } from 'igniteui-angular';
 
 @Component({
   selector: 'app-car-details',
@@ -14,6 +14,9 @@ import { enableRipple } from '@syncfusion/ej2-base';
   styleUrls: ['./car-details.component.css']
 })
 export class CarDetailsComponent implements OnInit {
+  public mode: PickerInteractionMode = PickerInteractionMode.DropDown;
+    public format = 'HH:mm ';
+    public date: Date = new Date();
   cars:any;
   the_car_selected:any;
   car = new Car;
@@ -30,34 +33,39 @@ export class CarDetailsComponent implements OnInit {
   fiveFormGroup: FormGroup;
     selectedCard: any;
   place_id: any;
+  card1:any;
+  total:number | null = null;
+  data: any;
+  submitted= false;
+  place_name: any;
+;
+  price :number | null = null;
+  days:number | null = null;;
   constructor(private dataService:ServicesService,private router: Router,private _formBuilder: FormBuilder,private cdr: ChangeDetectorRef) { }
-  public watermark: string = 'Select a time';
-  // sets the format property to display the time value in 24 hours format.
-  public formatString: string = 'HH:mm';
-  public interval: number = 60;
+
   ngOnInit(): void {
     
     this.get_car_selected();
     this.GetAllItems();
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
-      secondCtrl: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required],
       fourthCtrl: ['', Validators.required],
+      fifthCtrl: ['', Validators.required],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      fifthCtrl: ['', Validators.required],
       sixthCtrl: ['', Validators.required],
       seventhCtrl: ['', Validators.required],
+      eightthCtrl: ['', Validators.required],
     });
     this.fourthFormGroup = this._formBuilder.group({
-      eightthCtrl: ['', Validators.required],
+      ninethCtrl: ['', Validators.required],
 
     });
     this.fiveFormGroup = this._formBuilder.group({
-      ninethCtrl: ['', Validators.required],
+      lastCtrl: ['', Validators.required],
 
     });
     
@@ -67,6 +75,8 @@ export class CarDetailsComponent implements OnInit {
     this.dataService.getCarByName(name).subscribe(res => {
     this.cars = res;
     this.car= this.cars;
+localStorage.setItem('price_day', this.car.price);
+
     });
   }
   getPickup(){
@@ -74,6 +84,10 @@ export class CarDetailsComponent implements OnInit {
         this.places = res;
 
   });
+  this.days=Number(this.res.days);
+  this.price =Number(localStorage.getItem("price_day"));
+
+  this.total= this.price*this.days;
 }
   get_car_selected(){
     this.the_car_selected =localStorage.getItem("car");
@@ -82,11 +96,20 @@ export class CarDetailsComponent implements OnInit {
       
     }
   }
+  details_car(){
+    this.router.navigate(['/'+this.res.car_name+'/details']).then(() => {
+      window.location.reload();
+    });
+  }
   public selectCard0(card: any): void {
     this.selectedCard = card;
     this.cdr.detectChanges();
-    this.place_id=card.id;
-    console.log(this.selectedCard.id);
+    this.place_name=card.name;
+  }
+public selectCard1(card: any): void {
+  this.selectedCard = card;
+  this.cdr.detectChanges();
+ 
 }
 getResInfo(){
   this.res.car_name=localStorage.getItem("car");
@@ -94,7 +117,6 @@ getResInfo(){
   this.res.id_user=this.user_id;
   this.res.date_debut=localStorage.getItem("debut");
   this.res.date_fin=localStorage.getItem("fin");
-  
 
 }
 
@@ -138,4 +160,17 @@ getResInfo(){
       }
      
     }
+Reserve(){
+  this.res.price=this.total;
+  
+    this.res.place = this.place_name;
+    this.res.hour=this.res.hour.getHours()+':'+ this.res.hour.getMinutes();
+   this.dataService.create_res(this.res).subscribe(res=>{
+     this.data = res;
+  
+     this.submitted= true;
+   })
+    
 }
+
+  }

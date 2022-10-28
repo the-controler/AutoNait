@@ -67,7 +67,6 @@ this.GetAllItems();
     localStorage.setItem('car', $id);
   }
   details_car(){
-    console.log(this.car_name);
     this.router.navigate(['/'+this.car_name+'/details']).then(() => {
       window.location.reload();
     });

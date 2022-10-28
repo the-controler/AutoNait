@@ -26,4 +26,8 @@ export class ServicesService {
   getPlaces(){
     return this.httpClient.get('https://autobackn.herokuapp.com/api/places');
   }
+  create_res(data:any){
+    return this.httpClient.post('https://autobackn.herokuapp.com/api/addreservation',data);
+
+  }
 }

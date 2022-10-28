@@ -32,8 +32,11 @@ import { CarDetailsComponent } from './components/reservation/car-details/car-de
 import { CarViewComponent } from './components/car/car-view/car-view.component';
 import { Error404pageComponent } from './components/error/error404page/error404page.component';
 import { TimePickerModule } from '@syncfusion/ej2-angular-calendars';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-
+import { 
+	IgxTimePickerModule,
+	IgxInputGroupModule,
+	IgxIconModule
+ } from "igniteui-angular";
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +68,11 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    TimePickerModule,
+    IgxTimePickerModule,
+	IgxInputGroupModule,
+	IgxIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

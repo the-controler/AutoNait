@@ -26,7 +26,7 @@
     "@auth0/angular-jwt": "^5.1.0",
     "@igniteui/material-icons-extended": "^2.10.0",
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
-    "@syncfusion/ej2-angular-calendars": "^20.3.49",
+    "@syncfusion/ej2-angular-calendars": "^20.3.50",
     "bootstrap": "^5.2.1",
     "bootstrap-icons": "^1.9.1",
     "bs-stepper": "^1.7.0",

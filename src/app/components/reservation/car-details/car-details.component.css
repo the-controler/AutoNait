@@ -239,18 +239,24 @@ border-style: solid;
 
   .row1{
     margin: 5px;
+	width: 100%;
 
   }
 
-  igx-card-media >img{
+  igx-card-media >figure >img{
     width: 250px;
     border-radius:5%;
-    margin: 2px;
-	height: 200px;
+    margin: 10px;
+	height: 240px;
+
 	
 }
+
 igx-card-media{	text-align: center;
 	font-family:Georgia, 'Times New Roman', Times, serif;
+	position: relative;
+  text-align: center;
+  color: white;
 
 }
 .card {
@@ -261,18 +267,21 @@ igx-card-media{	text-align: center;
     border-radius: 5px;
     margin: auto;
 	font-family:Georgia, 'Times New Roman', Times, serif;
-	
-}
-.card{
-	margin-left: 70%;
-	right: 0;
 	width: 100%;
+
 }
 
+.ss{
+width:100%;
+}
 
 .card-wrapper{
     width: 100%;
 
+}
+igx-card{
+	width: 100%;
+margin: 10px;
 }
 
 
@@ -285,12 +294,16 @@ igx-card-media{	text-align: center;
 .car_img >img{
     width: 50%;
 }
-
+igx-time-picker {
+    width: 200px;
+	color: white;
+}
 
 .section {
 	position: relative;
 	width: auto;
 	height: 100vh;
+	margin-top: 15%;
 }
 input{
 	text-align: center;

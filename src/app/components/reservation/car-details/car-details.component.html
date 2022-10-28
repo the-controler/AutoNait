@@ -4,8 +4,12 @@
     </head>
     <body>
         <div><app-navbar></app-navbar></div>
+        
         <input hidden value="{{cli}}" name="cli">
   <div *ngIf="cli;else nocli">
+    <div class="alert alert-warning" role="alert" style="margin: 0%;text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;">
+L'Heure de Retour doit être la même que l'Heure de Départ, chaque retard sera compté comme un jour de plus !!    </div>
         <div class="car_img" >
             <img src="{{car.image}}" alt="Card image cap">
         </div>
@@ -31,13 +35,13 @@
                       <div class="row"id="column ">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Nom d'utilisateur" value="{{user.username}}" disabled>
+                            <input class="form-control" type="text" placeholder="Nom d'utilisateur" value="{{user.username}}" readonly>
                             <span class="form-label">Nom d'utilisateur :</span>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <input  class="form-control" type="text" name="user_id" value="{{res.id_user}}" disabled>
+                            <input  class="form-control" type="text" name="user_id" value="{{res.id_user}}" readonly>
                             <span class="form-label">ID : </span>
                           </div>
                         </div>
@@ -47,19 +51,27 @@
                       <div class="row"id="column ">
                         <div class="col-md-4">
                           <div class="form-group">
-                            <input class="form-control" type="date" required value="{{res.date_debut}}" disabled >
+                            <input  class="form-control" type="date" required value="{{res.date_debut}}" readonly >
                             <span class="form-label">DÉPART</span>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <input class="form-control" type="date" required disabled value="{{res.date_fin}}">
+                            <input class="form-control"  type="date" required readonly value="{{res.date_fin}}">
                             <span class="form-label">RETOUR </span>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <input class="form-control" type="text" required  value="{{res.date_fin}}">
+                            <!-- <input class="form-control" type="text" required  value="{{res.date_fin}}"> -->
+                            <igx-time-picker
+#timePicker
+[(ngModel)]="date"
+[mode]="mode"
+[spinLoop]='true'
+[inputFormat]="format" required class="form-control" style="color: white;" formControlName="fifthCtrl" name="hour" [(ngModel)]="res.hour">
+    <label igxLabel>Temp</label>
+</igx-time-picker>
                             <span class="form-label">temp </span>
                           </div>
                                                </div>
@@ -69,13 +81,13 @@
                         <div class="row"id="column ">
                           <div class="col-md-4">
                           <div class="form-group">
-                            <input class="form-control" type="text" required value="{{res.days}}" disabled>
+                            <input class="form-control" type="text" required value="{{res.days}}"  readonly>
                             <span class="form-label">N° jour </span>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group" >
-                            <input class="form-control" type="text" required disabled value="{{res.car_name}}" style="width:110%">
+                            <input class="form-control" type="text" required readonly value="{{res.car_name}}"  style="width:110%">
                             <span class="form-label">Voiture </span>
                             
                           </div>
@@ -83,8 +95,8 @@
                         <div class="col-md-4">
                           <div class="form-group">
 
-                            <input class="form-control" type="text" required value="{{car.price}} MAD" disabled>
-                            <span class="form-label">prix /jr </span>
+                            <input class="form-control" type="text" required value="{{total}} Mad" readonly>
+                            <span class="form-label">prix Total </span>
                             
                           </div>
                         </div>
@@ -99,20 +111,26 @@
                                 <mat-label class="label">place</mat-label>
 <br>
                               <igx-card *ngFor="let card of places" (click)="selectCard0(card)"
-                                  [ngClass]="{'selected-card': selectedCard === card}" class="pic">
-                                  <div class="inline-block">
+                                  [ngClass]="{'selected-card': selectedCard === card}" class="pic" >
+                                  <div class="inline-block" class="ss">
                                   <div class="row1" >
                                       <div class="card"  >
                                   <igx-card-media  >
                                       <igx-badge *ngIf="selectedCard === card" value="Votre choix actuel"></igx-badge>
-                                      <img src="{{card.image}}" alt="Pick up"  >
-                                      <mat-label> {{card.name}}</mat-label>
-                                      <input hidden value="{{card.name}}">
-                                     </igx-card-media>
+                                    
+                                      <figure class="figure">
+                                        <img src="{{card.image}}"
+                                         class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                                        <figcaption class="figure-caption">{{card.name}}</figcaption>
+                                        <input hidden value="{{card.name}}">
+                                      </figure>
+                                     </igx-card-media> 
                                   </div>
                               </div>
+                              
                             </div>
                                   </igx-card>
+                                 
                               </div>
                       </div>
                           </div>
@@ -120,17 +138,9 @@
                          
                       </div>
                       </form>
-                      <form [formGroup]="fiveFormGroup">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input class="form-control" type="text" disabled value="{{car.guarantee}}  MAD">
-                          <span class="form-label">grantee</span>
-                        </div>
-                      </div>
                       <div class="form-btn">
-                        <button class="submit-btn">Book Now</button>
+                        <button class="submit-btn" type="submit" (click)="Reserve()">Réserver maintenant</button>
                       </div>
-                    </form>
                   </div>
                 </div>
               </div>
@@ -176,44 +186,42 @@
   <div class="poto">
     <div class="border">
       <div class="sdu">
-        <div class="tok">€3,000.00</div>
-        <div class="fire">Price</div>
+        <div class="tok">{{car.price}} MAD / jr</div>
+        <div class="fire">Prix</div>
       </div>
       <div class="border-b p-5">
         <ul class="service-info">
           <li class="yaro">
             <div class="masko">
               <mat-icon class="betsno">check</mat-icon>
-              <strong class="natam">96</strong> interested persons
+              <strong class="natam">96</strong> personnes intéressées
             </div>
           </li>
           <li class="yaro">
             <div class="masko">
               <mat-icon class="betsno">check</mat-icon>
-              <strong class="natam">1 hours</strong> reaction time
+              <strong class="natam">1 hours</strong>  temps de réaction
             </div>
           </li>
           <li class="yaro">
             <div class="masko">
               <mat-icon class="betsno">check</mat-icon>
-              <strong class="natam">12 hours</strong> delivery time
-            </div>
+              livraison en temps voulu
+                        </div>
           </li>
         </ul>
       </div>
       <div class="po">
-        <h5>Addons Services</h5>
+        <h5>Descriptions</h5>
         <div class="fle">
           <div class="sol">
             <input type="checkbox" class="slj" />
           </div>
           <div class="flex">
-            <div class="pri">€200.00</div>
-            <h6 class="hito">Execution after work</h6>
-            <p class="mt-2">
-              Thanks to our home office approach, we can serve you during the entire microservice even after work, if that suits you
-              better. The following times are possible after close of business: sun - thu, 9 p.m. - 7 p.m.
-            </p>
+            <h6 class="hito">Véhicule</h6>
+            <div class="pri">{{car.name}} </div>
+            
+           
           </div>
         </div>
         <div class="eni">
@@ -221,23 +229,23 @@
             <input type="checkbox" class="dohi" />
           </div>
           <div class="flex">
-            <div class="pri">€200.00</div>
-            <h6 class="hito">Execution after work</h6>
+            <h6 class="hito">Grantee</h6>
+            <div class="pri">{{car.guarantee}}  MAD</div>
             <p class="mt-2">
-              Thanks to our home office approach, we can serve you during the entire microservice even after work, if that suits you
-              better. The following times are possible after close of business: sun - thu, 9 p.m. - 7 p.m.
+                  {{car.description}}
             </p>
           </div>
         </div>
       </div>
       <div class="ooo">
-        <p class="text-gray-400 mb-4">This price can increase due to additional bookings</p>
-        <button mat-flat-button class="plot" color="accent">Buy now</button>
+        <p class="text-gray-400 mb-4">Ce prix peut augmenter et diminuer en fonction du nombre de jours réservés.
+        </p>
+        <button mat-flat-button class="plot" (click)="details_car()" color="accent">Voir Détails</button>
       </div>
     </div>
     <div class="iiiiii">
-      <p class="ppp">Do you have any special requirements?</p>
-      <button mat-stroked-button class="kho">Send us</button>
+      <p class="ppp">Avez-vous des exigences particulières ?</p>
+      <button mat-stroked-button class="kho">Envoyez-nous</button>
     </div>
   </div>
 
